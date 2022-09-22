@@ -2,7 +2,7 @@ const { mygroup, getMember } = require('../models/models.members');
 const getMemberMessage = (req, res) => {
     const id = req.params?.id;
     const member = getMember(id);
-    if (member) {
+    if (member.hasOwnProperty('id')) {
         res.send(`<html><body><ul><li>${member.name}</li></ul></body></html>`);
     }
     else res.send('Not valid');
