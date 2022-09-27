@@ -6,7 +6,7 @@ const getMemberMessage = (req, res) => {
         res.send(`<html><body><ul><li>${member.name}</li></ul></body></html>`);
     }
     else res.send('Not valid');
-
+ 
 };
 const getAllMemberMessage = (req, res) => {
     const htmls = mygroup.map(member => `<li>${member.name}</li>`).join('');

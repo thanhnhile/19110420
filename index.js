@@ -4,6 +4,8 @@ const PORT = 5000;
 // add this middleware to read post request body
 app.use(express.json());
 app.use(express.text());
+//EJS
+app.set('view engine', 'ejs');
 //middleware  to LOG
 app.use((req, res, next) => {
     console.log(`[Method:${req.method} - URL: ${req.originalUrl} - Host: ${req.headers.host} - ${new Date().toLocaleString()}]`);
@@ -18,10 +20,7 @@ const messageReq = require('./routes/messageRouters');
 app.use('/message', messageReq);
 /** Error handling */
 app.use((req, res, next) => {
-    const error = new Error("not found");
-    return res.status(404).json({
-        message: error.message,
-    });
+    res.render('404',{});
 });
 app.listen(PORT, () => {
     console.log(`Server is listening on ${PORT}`);
